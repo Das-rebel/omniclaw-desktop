@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a1a"/>
+      <stop offset="100%" stop-color="#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="50%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+
+  <!-- Outer ring -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="url(#glow)" stroke-width="3" opacity="0.3"/>
+
+  <!-- Connected nodes (6 outer) -->
+  <g opacity="0.8">
+    <circle cx="256" cy="76" r="18" fill="#7c3aed"/>
+    <line x1="256" y1="76" x2="256" y2="220" stroke="#7c3aed" stroke-width="2" opacity="0.4"/>
+
+    <circle cx="412" cy="151" r="18" fill="#3b82f6"/>
+    <line x1="412" y1="151" x2="308" y2="220" stroke="#3b82f6" stroke-width="2" opacity="0.4"/>
+
+    <circle cx="412" cy="361" r="18" fill="#06b6d4"/>
+    <line x1="412" y1="361" x2="308" y2="292" stroke="#06b6d4" stroke-width="2" opacity="0.4"/>
+
+    <circle cx="256" cy="436" r="18" fill="#7c3aed"/>
+    <line x1="256" y1="436" x2="256" y2="292" stroke="#7c3aed" stroke-width="2" opacity="0.4"/>
+
+    <circle cx="100" cy="361" r="18" fill="#3b82f6"/>
+    <line x1="100" y1="361" x2="204" y2="292" stroke="#3b82f6" stroke-width="2" opacity="0.4"/>
+
+    <circle cx="100" cy="151" r="18" fill="#06b6d4"/>
+    <line x1="100" y1="151" x2="204" y2="220" stroke="#06b6d4" stroke-width="2" opacity="0.4"/>
+  </g>
+
+  <!-- Center hub -->
+  <circle cx="256" cy="256" r="48" fill="#0a0a1a" stroke="url(#glow)" stroke-width="4"/>
+  <circle cx="256" cy="256" r="32" fill="url(#glow)" opacity="0.15"/>
+
+  <!-- Center icon: simplified brain/processor -->
+  <g stroke="url(#glow)" stroke-width="3" fill="none" stroke-linecap="round">
+    <rect x="238" y="241" width="36" height="30" rx="4"/>
+    <line x1="244" y1="250" x2="250" y2="250"/>
+    <line x1="244" y1="256" x2="250" y2="256"/>
+    <line x1="244" y1="262" x2="250" y2="262"/>
+    <line x1="262" y1="248" x2="268" y2="248"/>
+    <line x1="262" y1="252" x2="270" y2="252"/>
+    <line x1="262" y1="256" x2="268" y2="256"/>
+    <line x1="262" y1="260" x2="270" y2="260"/>
+    <line x1="262" y1="264" x2="268" y2="264"/>
+  </g>
+
+  <!-- Pulse ring -->
+  <circle cx="256" cy="256" r="60" fill="none" stroke="url(#glow)" stroke-width="1.5" opacity="0.2">
+    <animate attributeName="r" from="60" to="80" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" from="0.3" to="0" dur="2s" repeatCount="indefinite"/>
+  </circle>
+</svg>

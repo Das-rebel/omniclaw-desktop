@@ -1,0 +1,189 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+
+/* Root variables for app theme, dark and light mode */
+:root {
+  --brand: #00ff29;
+  --translucent: rgba(193, 193, 193, 0.5);
+  --sidebar-width: 250px;
+  --nav-height: 52px;
+
+  --primary: #0b0b0b;
+  --secondary: #626262;
+
+  --base: #4d80e6;
+  --base-text: rgb(246, 247, 255);
+  --base-hover: #2b5bbb;
+  --base-yellow: #e6e04d;
+  --base-green: #4de64d;
+  --base-red: #e64d4d;
+  --base-red-light: #ffdbdb;
+
+  --active: #4d80e6;
+  --active-hover: #2b5bbb;
+  --active-text: #fff;
+
+  --border: #e4e4e4;
+
+  --bg: #fff;
+  --bg-secondary: rgb(246, 246, 246);
+  --bg-tertiary: #dedede;
+  --bg-color-secondary-hover: rgb(226, 226, 226);
+
+  /* OmniClaw semantic tokens */
+  --accent: var(--base);
+  --text: var(--primary);
+  --text-secondary: var(--secondary);
+  --text-muted: #888;
+  --sidebar-bg: color-mix(in srgb, var(--bg) 98%, #000);
+  --card-bg: color-mix(in srgb, var(--bg) 90%, #fff);
+  --hover: color-mix(in srgb, var(--border) 20%, transparent);
+  --accent-bg: color-mix(in srgb, var(--accent) 10%, transparent);
+  --success: var(--base-green);
+  --error: var(--base-red);
+  --warning: #f59e0b;
+  --bg-translucent: var(--translucent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --translucent: rgba(0, 0, 0, 0.5);
+    --sidebar-width: 250px;
+    --nav-height: 52px;
+
+    --primary: #fff;
+    --secondary: #c1c1c1;
+
+    --base: #4d88ff;
+    --base-text: hsl(213, 100%, 93%);
+    --base-hover: #82acff;
+    --base-yellow: #776b0e;
+    --base-green: #128212;
+    --base-red: #cb1d1d;
+    --base-red-light: #3d2323;
+
+    --border: #565656;
+
+    --bg: #171717;
+    --bg-secondary: #373737;
+    --bg-tertiary: #575757;
+    --bg-color-secondary-hover: rgb(108, 108, 108);
+
+    color-scheme: dark;
+
+    /* OmniClaw semantic overrides for dark */
+    --sidebar-bg: color-mix(in srgb, var(--bg) 50%, #000);
+    --card-bg: color-mix(in srgb, var(--bg-secondary) 80%, #000);
+    --hover: rgba(255, 255, 255, 0.06);
+    --text-muted: #777;
+  }
+}
+
+@font-face {
+  font-family: 'Porpora';
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../assets/porpora/Porpora-Regular.woff2') format('woff2'),
+    url('../../assets/porpora/Porpora-Regular.woff') format('woff');
+}
+
+@import '../../assets/inter/inter.css';
+
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: 'Inter var', sans-serif;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  color: var(--primary);
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  height: fit-content;
+  width: fit-content;
+}
+
+a:hover {
+  opacity: 1;
+  text-decoration: none;
+}
+
+.app-layout {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-main {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ─── Frameless window drag region ─────────────── */
+.title-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 38px;
+  -webkit-app-region: drag;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.title-bar-buttons {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 38px;
+  width: 70px;
+  -webkit-app-region: no-drag;
+  z-index: 101;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}

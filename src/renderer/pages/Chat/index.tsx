@@ -91,11 +91,34 @@ Write with personality matching ${persona}'s voice. Use vivid descriptions.`;
         setVaultQuery(query);
         setShowVaultSearch(true);
         addToast(`Searching vault for: "${query}"`, 'info');
+        
+        // We now wait for results and augment the prompt so the AI can answer based on them
         searchVault(query).then((results) => {
           if (results.length > 0) {
             addToast(`Found ${results.length} vault results`, 'success');
+            
+            // Format results as a context block for the AI
+            const contextBlock = results.slice(0, 5).map((r, i) => 
+              `[Result ${i+1}] ${r.name || 'Untitled'}: ${r.content || r.text || ''}`
+            ).join('\\n');
+            
+            const augmentedContent = `[VAULT SEARCH RESULTS for "${query}"]\\n${contextBlock}\\n\\nUser Question: ${content}`;
+            
+            if (!currentConversation) {
+              const newConv = createConversation();
+              sendMessage(augmentedContent, newConv);
+            } else {
+              sendMessage(augmentedContent);
+            }
           } else {
             addToast('No vault results found', 'warning');
+            // Still send the original message so the AI can try to answer generally
+            if (!currentConversation) {
+              const newConv = createConversation();
+              sendMessage(content, newConv);
+            } else {
+              sendMessage(content);
+            }
           }
         });
         return;

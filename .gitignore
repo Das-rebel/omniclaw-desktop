@@ -1,0 +1,6 @@
+node_modules/
+release/
+.erb/dll/
+dist/
+*.log
+.DS_Store

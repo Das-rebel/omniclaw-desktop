@@ -147,10 +147,10 @@ Write with personality matching ${persona}'s voice. Use vivid descriptions.`;
 
   const handleEmptySend = useCallback(
     (content: string) => {
-      const newConv = createConversation();
-      sendMessage(content, newConv);
+      // Reuse handleSend logic - it handles creating a new conversation
+      handleSend(content);
     },
-    [createConversation, sendMessage]
+    [handleSend]
   );
 
   const handleVaultSearch = async () => {
@@ -303,7 +303,7 @@ Write with personality matching ${persona}'s voice. Use vivid descriptions.`;
         <div ref={messagesEndRef} />
       </div>
 
-      <MessageInput onSend={sendMessage} disabled={isLoading} />
+      <MessageInput onSend={handleSend} disabled={isLoading} />
     </div>
   );
 }
